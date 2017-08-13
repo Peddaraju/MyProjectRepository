@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="demoBean_SI" class="com.app.ioc.di.DemoBean">
+		<property name="message" value="raju"></property>
+	</bean>
+
+	<bean id="demoBean_CI" class="com.app.ioc.di.DemoBean">
+		<constructor-arg value="Prema"></constructor-arg>
+	</bean>
+
+	<bean id="demoBeanCred1" class="com.app.ioc.di.DemoBeanIndex">
+		<constructor-arg name="password" index="1" value="raju" />
+		<constructor-arg name="userName" index="0" value="prema" />
+	</bean>
+
+	<bean id="demoBeanCred2" class="com.app.ioc.di.DemoBeanIndex">
+		<constructor-arg name="userName" value="prema" />
+	</bean>
+
+	<bean id="DIObje1" class="com.app.ioc.di.DemoBean_DI_Object">
+		<property name="testBean">
+			<!-- <bean class="com.app.ioc.di.DemoBeanIndex.TestBean"></bean> -->
+			<ref bean="testBean" />
+		</property>
+	</bean>
+	<bean id="DIObj2" class="com.app.ioc.di.DemoBean_DI_Object" autowire="byType" />
+
+	<bean id="testBean" class="com.app.ioc.di.TestBean" />
+
+</beans>
